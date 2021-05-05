@@ -63,7 +63,12 @@ const upload = multer({ storage });
 app.use('/api', imageRouter(upload));
 app.use('/api', authRouter)
 app.use('/api', userRouter)
-
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static('client/build'))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    })
+}
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -73,7 +78,10 @@ app.use((req, res) => {
 
 
 
+
 const PORT = process.env.PORT || 5000
+
+
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

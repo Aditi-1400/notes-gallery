@@ -4,6 +4,7 @@ import {isAuth} from "../helpers/auth";
 import {Redirect} from 'react-router-dom';
 import '../css/uploadNotes.css';
 import $ from 'jquery';
+import Navbar from "../components/navbar";
 
 export default function FilterSubjects(props){
     let history = useHistory();
@@ -30,17 +31,18 @@ export default function FilterSubjects(props){
       });
     return(
         <>
+        <Navbar></Navbar>
         {!isAuth() ? <Redirect to='/login' /> : null}
-        <div class="shade">
-		<div class="blackboard" style={{top:"20%"}}>
-				<form class="form" autocomplete="new-password" onSubmit={submit}>
+        <div className="shade">
+		<div className="blackboard" style={{top:"20%"}}>
+				<form className="form" autocomplete="new-password" onSubmit={submit}>
                          <p style={{marginTop:"8rem",marginLeft:"3em"}}>
                             <label>Semester: </label>
                             <span class="select">
                             <select name="slct" id="slct" onChange={onSemesterChange}>
                                 <option selected disabled>Choose an option</option>
                                 <option value="I" > I </option>
-                                <option value="II" > II </option> 
+                                <option value="I" > II </option> 
                                 <option value="III" > III </option>
                                 <option value="IV" > IV </option>
                                 <option value="V" > V </option>
@@ -52,7 +54,7 @@ export default function FilterSubjects(props){
  			            </p> 
 						<p style={{marginLeft:"3em",paddingRight:"5em"}}>
 							<label style={{marginRight:"1em"}}>Branch:</label>
-                            <span class="select" >
+                            <span className="select" >
 								<select name="slct" id="slct" onChange={onBranchChange}>
 									<option selected disabled>Choose an option</option>
 									<option value="Computer Science Engineering" >Computer Science</option>
@@ -64,7 +66,7 @@ export default function FilterSubjects(props){
   			            </p>
                         
                   
-                          <p class="wipeout">
+                          <p className="wipeout">
 								<input type="submit" value="Next" />
 						</p>
                     </form>

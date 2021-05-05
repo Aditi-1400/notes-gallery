@@ -4,7 +4,7 @@ body{
 .Signup h1{
     text-align: center;
     font-weight: 900;
-    margin-top: 25rem;
+    margin-top: 15rem;
   }
  .Signup p{
     text-align: center;
@@ -16,6 +16,11 @@ body{
       text-align: center;
       place-content: center;
 
+  }
+
+  .activate form{
+    margin-top: 25rem;
+    text-align: center;
   }
   /*Form*/
   
@@ -33,7 +38,7 @@ body{
     box-shadow: none;
     outline: none;
     border: none;
-    background-color: #ebebe7;
+    background-color: #f2f2f2;
     border-bottom: 2px solid #182628;
     max-width: 35rem;
     
@@ -113,6 +118,7 @@ body{
   #dropdown{
     min-width:25rem ;
   }
+
 
   @media(max-width:590px){
     .wrap{

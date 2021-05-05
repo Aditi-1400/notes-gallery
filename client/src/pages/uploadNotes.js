@@ -3,7 +3,7 @@ import React ,{ Component} from "react";
 import '../css/uploadNotes.css';
 import $ from 'jquery';
 import { SubjectName } from '../subjectsData';
-
+import Navbar from "../components/navbar";
 
 export default class UploadNotes extends Component {
 	constructor(props){
@@ -76,14 +76,13 @@ export default class UploadNotes extends Component {
 		formData.append('unit', this.state.unit);
 		formData.append('other', this.state.other);
 		console.log(formData);
-		Axios.post('http://localhost:5000/api/uploadNotes', formData)
+		Axios.post(`/api/uploadNotes`, formData)
 		.then((response) => {
-			response.data.success ? alert('File successfully uploaded') : alert('File already exists');
-			this.props.history.push('/');
+			this.props.history.push('/profile');
 		})
 		.catch(err => console.log(err));
 	}
-	
+	 
 	handleSubmit = e => {
         e.preventDefault();
 
@@ -95,11 +94,12 @@ export default class UploadNotes extends Component {
     return(
 
 <div class="shade">
-		<div class="blackboard">
-				<form class="upload-form" autocomplete="new-password" onSubmit={this.handleSubmit}>
+	<Navbar></Navbar>
+		<div className="blackboard">
+				<form className="upload-form" autocomplete="new-password" onSubmit={this.handleSubmit}>
 						<p>
 							<label>Role:</label>
-					<span class="select" style={{marginLeft:"73px"}} onChange={this.handleChange('role')}>
+					<span className="select" style={{marginLeft:"73px"}} onChange={this.handleChange('role')}>
 							<select name="role" id="slct" >
 								<option selected disabled>Choose an option</option>
 								<option value="Teacher" >Teacher</option>
@@ -111,21 +111,21 @@ export default class UploadNotes extends Component {
 				
 						<p>
 							<label>Year:</label>
-							<span class="select" style={{marginLeft:"77px"}} onChange={this.handleChange('year')}>
+							<span className="select" style={{marginLeft:"77px"}} onChange={this.handleChange('year')}>
 							<select name="year" id="slct">
 								<option selected disabled>Choose an option</option>
-								<option value="1" > 2021 </option>
-								<option value="2" > 2020 </option> 
-								<option value="3" > 2019 </option>
-								<option value="3" > 2018 </option>
-								<option value="3" > 2017 </option>
-								<option value="3" > 2016 </option>
-								<option value="3" > 2015 </option>
-								<option value="3" > 2014 </option>
-								<option value="3" > 2013 </option>
-								<option value="3" > 2012 </option>
-								<option value="3" > 2011 </option>
-								<option value="3" > 2010 </option>
+								<option value="2021" > 2021 </option>
+								<option value="2020" > 2020 </option> 
+								<option value="2019" > 2019 </option>
+								<option value="2018" > 2018 </option>
+								<option value="2017" > 2017 </option>
+								<option value="2016" > 2016 </option>
+								<option value="2015" > 2015 </option>
+								<option value="2014" > 2014 </option>
+								<option value="2013" > 2013 </option>
+								<option value="2012" > 2012 </option>
+								<option value="2011" > 2011 </option>
+								<option value="2010" > 2010 </option>
 							</select>
 							</span>
     
@@ -133,7 +133,7 @@ export default class UploadNotes extends Component {
 						  <p>
 								<label>Subject:</label>
 
-                                <span class="select" style={{marginLeft:"41px"}} onChange={this.handleChange('subject')}>
+                                <span className="select" style={{marginLeft:"41px"}} onChange={this.handleChange('subject')}>
 								<select name="slct" id="slct">
 							    <option selected disabled>Choose an option</option>		
 								{
@@ -153,7 +153,7 @@ export default class UploadNotes extends Component {
   			            </p>
 						  <p>
 								<label>Type:</label>
-                                <span class="select" style={{marginLeft:"79px"}} onChange={this.handleChange('type')}>
+                                <span className="select" style={{marginLeft:"79px"}} onChange={this.handleChange('type')}>
 								<select name="slct" id="slct">
 									<option selected disabled>Choose an option</option>
 									<option value="Notes"> Notes </option>
@@ -165,7 +165,7 @@ export default class UploadNotes extends Component {
   			            </p>  
 						<p>
 								<label>Unit:</label>
-                                <span class="select" style={{marginLeft:"79px"}} onChange={this.handleChange('unit')}>
+                                <span className="select" style={{marginLeft:"79px"}} onChange={this.handleChange('unit')}>
 								<select name="slct" id="slct">
 									<option selected disabled>Choose an option</option>
 									<option value="All"> All </option>
@@ -195,7 +195,7 @@ export default class UploadNotes extends Component {
 								</span>
 						</p>
 
-						<p class="wipeout">
+						<p className="wipeout">
 								<input type="submit" value="Submit" />
 						</p>
 				</form>

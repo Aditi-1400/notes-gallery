@@ -5,7 +5,7 @@ import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../css/login.css'
-
+import Navbar from '../../components/navbar'
 const Login = ({history}) => {
 
     const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const Login = ({history}) => {
         if (email && password1) {
           setFormData({ ...formData, textChange: 'Submitting' });
           axios
-            .post(`http://localhost:5000/api/login`, {
+            .post(`/api/login`, {
               email,
               password: password1
             })
@@ -65,12 +65,13 @@ const Login = ({history}) => {
           toast.error('Please fill all fields');
         }
       };
-
+  
 
     return ( 
      
         <div className="Signup">
          {!isAuth()?null: <Redirect to = "/profile" />}
+            <Navbar></Navbar>
             <ToastContainer/>
             <h1>Log In to Notes Gallery</h1>
             <p>Don't have an account? <a href="/register">Sign Up</a></p>
@@ -94,7 +95,7 @@ const Login = ({history}) => {
                 <input type="checkbox" id="Remember me" name="Remember me" value="Remember me" />
                 <label for="Remember me"> Remember me</label>
                 <br></br>
-                <a href="/users/password/forget">Forgot Password ?</a>
+                <a href="/forgotPassword">Forgot Password ?</a>
                 <br></br>
                 <input type="submit" className="loginSubmit" value="Login"/>     
             </form>
